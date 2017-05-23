@@ -12,6 +12,7 @@ mongoose.connect('mongodb://localhost/library-mongoose')
 var books = require('./routes/book');
 var cust = require('./routes/cust');
 var trans = require('./routes/trans');
+var index = require('./routes/index');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', index);
 app.use('/books', books);
 app.use('/cust', cust);
 app.use('/trans', trans);
